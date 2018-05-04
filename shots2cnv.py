@@ -53,7 +53,7 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
                 if station[0] == station_code:
                     sta_lat = station[1]
                     sta_lon = station[2]
-                    sta_depth = station[3] / -1000.0
+                    sta_depth = station[3] / 1000.0
 
             # Choose whether lats and longs are degrees north or south and
             # east or west
@@ -78,7 +78,10 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
 
             # Count number of arrivals in file
             num_shots = sum(1 for line in open(file_path))
-            print(num_shots)
+
+            # Skip event if no shots
+            if num_shots == 0:
+                continue
 
             # Now write the formatted arrival phases
             for n, arrival in enumerate(arrival_file):
