@@ -67,7 +67,6 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
                 EW = "W"
 
             # Write origin details
-            w.write(station_code)
             w.write("{:} {:7.4f}{:} {:8.4f}{:} {:6.2f} {:6.2f} {:6g} {:9.2f}\n"
                     .format(dummy_OBS_origin, np.abs(sta_lat), NS,
                             np.abs(sta_lon), EW, sta_depth, dummy_OBS_mag,
