@@ -31,7 +31,7 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
     # Prepare output file
     w = open(out_file, "w")
 
-    # Set dummy parameters for OBS sources 
+    # Set dummy parameters for OBS sources
     dummy_OBS_origin = "121212 1212 12.12"  # date-time string
     dummy_OBS_mag = 9.99  # magnitude
     dummy_azgap = 0.00  # maximum azimuthal gap
@@ -75,7 +75,7 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
 
             # Now write the arrivals
             arrival_file = open(file_path, "r")
-            
+
             # Count number of arrivals in file
             num_shots = sum(1 for line in open(file_path))
             print(num_shots)
@@ -87,7 +87,7 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
                 arrival_time = float(arrival.split()[6]) / 1000.0
 
                 # Regular writing
-                if n != num_shots  and (n % 6) != 0:
+                if n != num_shots and (n % 6) != 0:
                     w.write("{:4s}{:2s}{:6.2f}".format(shot_name, pha_wgt,
                                                        arrival_time))
                 # Add newline character if last shot in file or a factor of 6
@@ -97,5 +97,3 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
 
             # Blank line between events
             w.write("\n")
-
-
