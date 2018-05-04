@@ -32,7 +32,7 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
     w = open(out_file, "w")
 
     # Set dummy parameters for OBS sources
-    dummy_OBS_origin = "121212 1212 12.12"  # date-time string
+    dummy_OBS_origin = "1212 1212 12.12"  # date-time string
     dummy_OBS_mag = 9.99  # magnitude
     dummy_azgap = 0.00  # maximum azimuthal gap
     dummy_rms_res = 0.00
@@ -67,8 +67,9 @@ def shots2cnv(directory, out_file, station_list, pha_wgt):
                 EW = "W"
 
             # Write origin details
-            w.write("{:} {:7.4f}{:} {:8.4f}{:} {:6.2f} {:6.2f} {:6g} {:9.2f}\n"
-                    .format(dummy_OBS_origin, np.abs(sta_lat), NS,
+            w.write("{:}{:} {:7.4f}{:} {:8.4f}{:}{:7.2f}{:7.2f} {:6g} {:9.2f}\n"
+                    .format(station_code[-2:],
+                            dummy_OBS_origin, np.abs(sta_lat), NS,
                             np.abs(sta_lon), EW, sta_depth, dummy_OBS_mag,
                             dummy_azgap, dummy_rms_res))
 
